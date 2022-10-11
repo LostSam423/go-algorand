@@ -984,7 +984,7 @@ func initConsensusProtocols() {
 	v24.MaxGlobalSchemaEntries = 64
 
 	// Maximum cost of ApprovalProgram/ClearStateProgram
-	v24.MaxAppProgramCost = 200000
+	v24.MaxAppProgramCost = 100000000
 
 	// Maximum number of apps a single account can create
 	v24.MaxAppsCreated = 10
