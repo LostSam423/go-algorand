@@ -701,7 +701,7 @@ func initConsensusProtocols() {
 		MinTxnFee:           1000,
 		MaxTxnLife:          1000,
 		MaxTxnNoteBytes:     1024,
-		MaxTxnBytesPerBlock: 10000000,
+		MaxTxnBytesPerBlock: 1000000,
 		DefaultKeyDilution:  10000,
 
 		MaxTimestampIncrement: 25,
@@ -1163,7 +1163,7 @@ func initConsensusProtocols() {
 	// Require MaxTxnLife + X blocks and headers preserved by a node
 	v33.DeeperBlockHeaderHistory = 1
 
-	v33.MaxTxnBytesPerBlock = 5 * 1024 * 1024 * 10
+	v33.MaxTxnBytesPerBlock = 5 * 1024 * 1024
 
 	Consensus[protocol.ConsensusV33] = v33
 
