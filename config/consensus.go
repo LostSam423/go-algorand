@@ -701,7 +701,7 @@ func initConsensusProtocols() {
 		MinTxnFee:           1000,
 		MaxTxnLife:          1000,
 		MaxTxnNoteBytes:     1024,
-		MaxTxnBytesPerBlock: 1000000,
+		MaxTxnBytesPerBlock: 10000000,
 		DefaultKeyDilution:  10000,
 
 		MaxTimestampIncrement: 25,
@@ -725,8 +725,8 @@ func initConsensusProtocols() {
 		DownCommitteeSize:      10000,
 		DownCommitteeThreshold: 7750,
 
-		AgreementFilterTimeout:        40 * time.Second,
-		AgreementFilterTimeoutPeriod0: 40 * time.Second,
+		AgreementFilterTimeout:        4 * time.Second,
+		AgreementFilterTimeoutPeriod0: 4 * time.Second,
 
 		FastRecoveryLambda: 5 * time.Minute,
 
@@ -1163,7 +1163,7 @@ func initConsensusProtocols() {
 	// Require MaxTxnLife + X blocks and headers preserved by a node
 	v33.DeeperBlockHeaderHistory = 1
 
-	v33.MaxTxnBytesPerBlock = 5 * 1024 * 1024
+	v33.MaxTxnBytesPerBlock = 5 * 1024 * 1024 * 10
 
 	Consensus[protocol.ConsensusV33] = v33
 
@@ -1191,7 +1191,7 @@ func initConsensusProtocols() {
 
 	v34.UnfundedSenders = true
 
-	v34.AgreementFilterTimeoutPeriod0 = 34000 * time.Millisecond
+	v34.AgreementFilterTimeoutPeriod0 = 3400 * time.Millisecond
 
 	Consensus[protocol.ConsensusV34] = v34
 
