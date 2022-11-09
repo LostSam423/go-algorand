@@ -725,7 +725,7 @@ func initConsensusProtocols() {
 		DownCommitteeSize:      10000,
 		DownCommitteeThreshold: 7750,
 
-		AgreementFilterTimeout:        4 * time.Second,
+		AgreementFilterTimeout:        2 * 4 * time.Second,
 		AgreementFilterTimeoutPeriod0: 4 * time.Second,
 
 		FastRecoveryLambda: 5 * time.Minute,
@@ -1191,7 +1191,7 @@ func initConsensusProtocols() {
 
 	v34.UnfundedSenders = true
 
-	v34.AgreementFilterTimeoutPeriod0 = 3400 * time.Millisecond
+	v34.AgreementFilterTimeoutPeriod0 = 2 * 3400 * time.Millisecond
 
 	Consensus[protocol.ConsensusV34] = v34
 
