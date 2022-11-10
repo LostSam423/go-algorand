@@ -104,7 +104,7 @@ const (
 	// Clerk
 	infoTxIssued               = "Sent %d MicroAlgos from account %s to address %s, transaction ID: %s. Fee set to %d"
 	infoTxCommitted            = "Transaction %s committed in round %d"
-	infoTxPending              = "Transaction %s still pending as of round %d"
+	infoTxPending              = "Transaction i %s still pending as of round %d"
 	malformedNote              = "Cannot base64-decode note %s: %s"
 	malformedLease             = "Cannot base64-decode lease %s: %s"
 	fileReadError              = "Cannot read file %s: %s"

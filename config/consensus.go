@@ -701,7 +701,7 @@ func initConsensusProtocols() {
 		MinTxnFee:           1000,
 		MaxTxnLife:          1000,
 		MaxTxnNoteBytes:     1024,
-		MaxTxnBytesPerBlock: 1000000,
+		MaxTxnBytesPerBlock: 10 * 1000000,
 		DefaultKeyDilution:  10000,
 
 		MaxTimestampIncrement: 25,
@@ -725,8 +725,8 @@ func initConsensusProtocols() {
 		DownCommitteeSize:      10000,
 		DownCommitteeThreshold: 7750,
 
-		AgreementFilterTimeout:        40 * time.Second,
-		AgreementFilterTimeoutPeriod0: 40 * time.Second,
+		AgreementFilterTimeout:        2 * 4 * time.Second,
+		AgreementFilterTimeoutPeriod0: 2 * 4 * time.Second,
 
 		FastRecoveryLambda: 5 * time.Minute,
 
@@ -1163,7 +1163,7 @@ func initConsensusProtocols() {
 	// Require MaxTxnLife + X blocks and headers preserved by a node
 	v33.DeeperBlockHeaderHistory = 1
 
-	v33.MaxTxnBytesPerBlock = 5 * 1024 * 1024
+	v33.MaxTxnBytesPerBlock = 5 * 1024 * 1024 * 10
 
 	Consensus[protocol.ConsensusV33] = v33
 
@@ -1191,7 +1191,7 @@ func initConsensusProtocols() {
 
 	v34.UnfundedSenders = true
 
-	v34.AgreementFilterTimeoutPeriod0 = 10 * 3400 * time.Millisecond
+	v34.AgreementFilterTimeoutPeriod0 = 2 * 3400 * time.Millisecond
 
 	Consensus[protocol.ConsensusV34] = v34
 
@@ -1220,13 +1220,13 @@ func initConsensusProtocols() {
 	// vAlphaX versions are an separate series of consensus parameters and versions for alphanet
 	vAlpha1 := v32
 	vAlpha1.ApprovedUpgrades = map[protocol.ConsensusVersion]uint64{}
-	vAlpha1.AgreementFilterTimeoutPeriod0 = 10 * 2 * time.Second
+	vAlpha1.AgreementFilterTimeoutPeriod0 = 2 * 2 * time.Second
 	vAlpha1.MaxTxnBytesPerBlock = 5000000 * 10
 	Consensus[protocol.ConsensusVAlpha1] = vAlpha1
 
 	vAlpha2 := vAlpha1
 	vAlpha2.ApprovedUpgrades = map[protocol.ConsensusVersion]uint64{}
-	vAlpha2.AgreementFilterTimeoutPeriod0 = 3500 * time.Millisecond * 10
+	vAlpha2.AgreementFilterTimeoutPeriod0 = 3500 * time.Millisecond * 2
 	vAlpha2.MaxTxnBytesPerBlock = 5 * 1024 * 1024 * 10
 	Consensus[protocol.ConsensusVAlpha2] = vAlpha2
 	vAlpha1.ApprovedUpgrades[protocol.ConsensusVAlpha2] = 10000
@@ -1253,7 +1253,7 @@ type Global struct {
 // initialized with our current defaults. This is used across all nodes we create.
 var Protocol = Global{
 	SmallLambda: 2000 * time.Millisecond,
-	BigLambda:   5 * 15000 * time.Millisecond,
+	BigLambda:   1.5 * 15000 * time.Millisecond,
 }
 
 func init() {
