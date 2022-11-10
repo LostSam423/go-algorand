@@ -725,8 +725,8 @@ func initConsensusProtocols() {
 		DownCommitteeSize:      10000,
 		DownCommitteeThreshold: 7750,
 
-		AgreementFilterTimeout:        2 * 4 * time.Second,
-		AgreementFilterTimeoutPeriod0: 4 * time.Second,
+		AgreementFilterTimeout:        40 * time.Second,
+		AgreementFilterTimeoutPeriod0: 40 * time.Second,
 
 		FastRecoveryLambda: 5 * time.Minute,
 
@@ -863,7 +863,7 @@ func initConsensusProtocols() {
 	v18.Asset = true
 	v18.LogicSigVersion = 1
 	v18.LogicSigMaxSize = 1000
-	v18.LogicSigMaxCost = 20000
+	v18.LogicSigMaxCost = 20000 * 10
 	v18.MaxAssetsPerAccount = 1000
 	v18.SupportTxGroups = true
 	v18.MaxTxGroupSize = 16
@@ -1191,7 +1191,7 @@ func initConsensusProtocols() {
 
 	v34.UnfundedSenders = true
 
-	v34.AgreementFilterTimeoutPeriod0 = 2 * 3400 * time.Millisecond
+	v34.AgreementFilterTimeoutPeriod0 = 10 * 3400 * time.Millisecond
 
 	Consensus[protocol.ConsensusV34] = v34
 
@@ -1220,14 +1220,14 @@ func initConsensusProtocols() {
 	// vAlphaX versions are an separate series of consensus parameters and versions for alphanet
 	vAlpha1 := v32
 	vAlpha1.ApprovedUpgrades = map[protocol.ConsensusVersion]uint64{}
-	vAlpha1.AgreementFilterTimeoutPeriod0 = 2 * time.Second
-	vAlpha1.MaxTxnBytesPerBlock = 5000000
+	vAlpha1.AgreementFilterTimeoutPeriod0 = 10 * 2 * time.Second
+	vAlpha1.MaxTxnBytesPerBlock = 5000000 * 10
 	Consensus[protocol.ConsensusVAlpha1] = vAlpha1
 
 	vAlpha2 := vAlpha1
 	vAlpha2.ApprovedUpgrades = map[protocol.ConsensusVersion]uint64{}
-	vAlpha2.AgreementFilterTimeoutPeriod0 = 3500 * time.Millisecond
-	vAlpha2.MaxTxnBytesPerBlock = 5 * 1024 * 1024
+	vAlpha2.AgreementFilterTimeoutPeriod0 = 3500 * time.Millisecond * 10
+	vAlpha2.MaxTxnBytesPerBlock = 5 * 1024 * 1024 * 10
 	Consensus[protocol.ConsensusVAlpha2] = vAlpha2
 	vAlpha1.ApprovedUpgrades[protocol.ConsensusVAlpha2] = 10000
 
@@ -1253,7 +1253,7 @@ type Global struct {
 // initialized with our current defaults. This is used across all nodes we create.
 var Protocol = Global{
 	SmallLambda: 2000 * time.Millisecond,
-	BigLambda:   15000 * time.Millisecond,
+	BigLambda:   5 * 15000 * time.Millisecond,
 }
 
 func init() {
